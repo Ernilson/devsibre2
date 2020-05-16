@@ -1,0 +1,30 @@
+use integro;
+
+-- TABELA USUARIO                                                                  -- sibre2020
+insert into usuario (login,email,senha)values('admin','admin@sibre','$2a$10$0YWMMxOtZFwc1NlflrGDXuESaxO2EFRn5Dr5y/IJpP7FcVtmhOeqS');
+                                                                                -- santidade777
+insert into usuario (login,email,senha)values('visitante','visitante@sibre','$2a$10$.9HNDP./LlxbsABKFO2cne9pZ6nAEgVqJfyUFQYPcTx1TnDlterYa');
+-- ----------------------------------------------------------------------------------------
+-- TABELA ROLE
+insert into role(nome_role)values('ROLE_ADMIN');
+insert into role(nome_role)values('ROLE_USER');
+-- -----------------------------------------------------------------------------------------
+-- TABELA USUARIOS_ROLES
+insert into usuarios_roles(usuario_id, role_id)values('admin','ROLE_ADMIN');
+insert into usuarios_roles(usuario_id, role_id)values('visitante','ROLE_USER');
+
+-------------------------------------------------------------------------------------------
+
+-- import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+-- System.out.print(new BCryptPasswordEncoder().encode("123"));
+------------------------------------------------------------------------------------
+sibre2020
+$2a$10$0YWMMxOtZFwc1NlflrGDXuESaxO2EFRn5Dr5y/IJpP7FcVtmhOeqS
+------------------------------------------------------------------------------------
+santidade777
+$2a$10$.9HNDP./LlxbsABKFO2cne9pZ6nAEgVqJfyUFQYPcTx1TnDlterYa
+-------------------------------------------------------------------------------------
+integro01
+$2a$10$8aM3TWao8vPNyiBFeD/xxuKAydkdC6RJ97VHMIPtNWeTAjfX83Ise
+
+

@@ -55,10 +55,10 @@ public class FormularioControl {
     }
 
     //Metodo para listar todos e buscar os cadastros
-    @GetMapping("/listar")
+    @GetMapping("/listacadastro")
     public ModelAndView lista(@RequestParam(value = "nome", required = false) String nome) {
         List<FormularioModel> retorno = new ArrayList<>();
-        ModelAndView model = new ModelAndView("/lista_Cadastro.html");
+        ModelAndView model = new ModelAndView("/lista_cadastro.html");
         if (nome == null) {
             retorno = service.listAll();
         } else {

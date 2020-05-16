@@ -17,7 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  *
- * @author Convidado
+ * @author Ernilson_Daniel_Lima_de_Souza
  */
 @Configuration
 @EnableWebSecurity
@@ -32,12 +32,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers(HttpMethod.GET,"/").permitAll()                  
             .antMatchers(HttpMethod.GET, "/agendas_User").permitAll()
             .antMatchers(HttpMethod.GET, "/agendas_User/{id}").permitAll()
-            .antMatchers(HttpMethod.POST, "/agendas_User").permitAll() 
+            .antMatchers(HttpMethod.POST, "/agendas_User").permitAll()
             .antMatchers(HttpMethod.GET, "/newagenda").hasRole("USER")
             .antMatchers(HttpMethod.POST, "/newagenda").hasRole("USER")
             .antMatchers(HttpMethod.POST, "/agendas").hasRole("USER")
-            .antMatchers(HttpMethod.GET, "/agendas").hasRole("USER")  
-           .antMatchers(HttpMethod.GET,"/listacantina").hasRole("ADMIN")
+            .antMatchers(HttpMethod.GET, "/agendas").hasRole("USER") 
+            .antMatchers(HttpMethod.GET,"/listacadastro").hasRole("ADMIN") 
+            .antMatchers(HttpMethod.POST,"/listacadastro").hasRole("ADMIN")
+           .antMatchers(HttpMethod.GET,"/listacantina").hasRole("ADMIN") 
            .antMatchers(HttpMethod.POST,"/listacantina").hasRole("ADMIN")
            .anyRequest().authenticated()
 	.and().formLogin().loginPage("/entrar").permitAll()

@@ -8,7 +8,7 @@ public interface PatrimonioService {
 
 	List<PatrimonioModel> listAll();
 
-	//List<PatrimonioModel> findByNomeContainingIgnoreCase(String nome);
+	List<PatrimonioModel> findByNomeContainingIgnoreCase(String nome);
 
 	boolean alterar(PatrimonioModel cnt);
 
