@@ -17,7 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  *
- * @author Ernilson_Daniel_Lima_de_Souza
+ * @author Convidado
  */
 @Configuration
 @EnableWebSecurity
@@ -26,24 +26,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private ImplementsUserDetaisService userDetailsServer;
 
-	@Override
+	@Override // Configura as solicitações de acesso por Http
     protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests()
-        .antMatchers(HttpMethod.GET,"/").permitAll()                  
-            .antMatchers(HttpMethod.GET, "/agendas_User").permitAll()
-            .antMatchers(HttpMethod.GET, "/agendas_User/{id}").permitAll()
-            .antMatchers(HttpMethod.POST, "/agendas_User").permitAll()
-            .antMatchers(HttpMethod.GET, "/newagenda").hasRole("USER")
-            .antMatchers(HttpMethod.POST, "/newagenda").hasRole("USER")
-            .antMatchers(HttpMethod.POST, "/agendas").hasRole("USER")
-            .antMatchers(HttpMethod.GET, "/agendas").hasRole("USER") 
-            .antMatchers(HttpMethod.GET,"/listacadastro").hasRole("ADMIN") 
-            .antMatchers(HttpMethod.POST,"/listacadastro").hasRole("ADMIN")
-           .antMatchers(HttpMethod.GET,"/listacantina").hasRole("ADMIN") 
-           .antMatchers(HttpMethod.POST,"/listacantina").hasRole("ADMIN")
+		http.csrf().disable() // Desativa as configurações padrão de memória
+		.authorizeRequests() // Permite restringir acesso
+        .antMatchers(HttpMethod.GET,"/").permitAll() // Qualquer usuário acessa a página inicial                 
+            .antMatchers(HttpMethod.GET, "/agendas_User").permitAll() // permite qualquer usuário a esta pagina em especifico
+            .antMatchers(HttpMethod.GET, "/agendas_User/{id}").permitAll() // permite qualquer usuário a esta pagina em especifico
+            .antMatchers(HttpMethod.POST, "/agendas_User").permitAll() // permite qualquer usuário a esta pagina em especifico
+            .antMatchers(HttpMethod.GET, "/newagenda").hasRole("USER2")
+            .antMatchers(HttpMethod.POST, "/newagenda").hasRole("USER2") // permite apenas perfis usuario1
+            .antMatchers(HttpMethod.POST, "/agendas").hasRole("USER2")
+            .antMatchers(HttpMethod.GET, "/agendas").hasRole("USER2") 
+            .antMatchers(HttpMethod.GET,"/listarcadastro").hasRole("ADMIN") // permite apenas perfis administrador
+            .antMatchers(HttpMethod.POST,"/listarcadastro").hasRole("ADMIN") // permite apenas perfis administrador
+            .antMatchers(HttpMethod.GET,"/lista_patrimonio").hasRole("ADMIN")
+           .antMatchers(HttpMethod.GET,"/listacantina").hasRole("USER")
+           .antMatchers(HttpMethod.POST,"/listacantina").hasRole("USER")
            .anyRequest().authenticated()
-	.and().formLogin().loginPage("/entrar").permitAll()
-	.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+	.and().formLogin().loginPage("/entrar").permitAll() // página padrão se efetuou o login
+	.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/entrar"); // página padrão após fazer o logout
    
     }
 
