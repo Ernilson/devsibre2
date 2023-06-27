@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">  
+
+    <head th:replace="layout/template :: head"> 
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <header th:replace="layout/template :: header"></header>
+    <Center>
+        <h5><a th:href="@{/formulario}">Novo Cadastro</a></h5>
+        <form action="#" th:action="@{/listarcadastro}" th:object="${nome}">
+
+            <div class="input-group mb-3 input-group mb-3 col-md-5 ml-5 mt-5">
+
+                <div class="input-group-append">               
+                    <button class="btn btn-primary btn-sm" type="submit">
+                        <span class="fa fa-search"></span>
+                        Pesquisar
+                    </button>              
+                </div> 
+                <input name="nome"
+                       id="nome" type="text" class="form-control" placeholder="Informe o nome"
+                       aria-label="Informe o nome" th:value="${nome}" aria-describedby="basic-addon2"> 
+
+                <div class="input-group-append ml-2">
+                    <a class="btn btn-secondary btn-sm" href="/listarcadastro" role="button"> <span class="fa fa-search"></span>
+                        Limpar</a>
+                </div>
+            </div>       
+    </Center>    
+    <div class="container mt-4">
+        <table class="table" with="800px">
+
+            <thead>
+                <tr>    <!--                  
+                    <th>ID</th>
+                    -->
+                    <th>NOME</th>
+                    <th>QUADRA</th>  
+                    <th>BAIRRO</th>  
+                    <th>TELEFONE</th>
+                    <th>EMAIL</th>  
+                    <th>DATA_NASC</th>  
+                    <th>STATUS</th>
+                    <th>EDITAR</th>
+                    <th>DELETE</th>
+                    <th><a th:href="@{'/pdf'}">PDF</a></th> 
+                    <!--<a th:href="@{'/pdf'}"style="float:right;"><img th:src="@{/images/Pdf.png}" style="width:40px; margin-left:10px;"> -->
+                </tr>
+            </thead>
+            <tbody>               
+                <tr th:each="cad:${cadastro}">
+                    <!--
+                    <td th:text="${cad.id_c}"></td>
+                    -->
+                    <td th:text="${cad.nome}"></td> 
+                    <td th:text="${cad.logradouro}"></td> 
+                    <td th:text="${cad.bairro}"></td> 
+                    <td th:text="${cad.fone}"></td>
+                    <td th:text="${cad.email}"></td>
+                    <td th:text="${cad.data}"></td>                     
+                    <td th:text="${cad.status}"></td>
+                    <td>
+                        <a th:href="@{/edite/}+${cad.id_c}"class="btn btn-warning">Aterar</a>                            
+                    </td>
+                    <td><a th:href="@{/deletar/}+${cad.id_c}"class="btn btn-danger">Apagar</a></td> 
+                </tr>
+            </tbody>
+        </table>            
+
+    </div>
+
+</body>
+<footer th:replace="layout/template :: footer"></footer>
+</html>
