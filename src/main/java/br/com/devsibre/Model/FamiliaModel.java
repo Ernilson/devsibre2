@@ -29,7 +29,8 @@ public class FamiliaModel {
     @Enumerated(EnumType.STRING)
     private StatusEnum seBatizado;
     @Enumerated(EnumType.STRING)
-    private StatusEnum status;    
+    private StatusEnum status;   
+    
     @OneToMany(cascade = CascadeType.ALL)
     private List<FilhoModel> filhos;
     

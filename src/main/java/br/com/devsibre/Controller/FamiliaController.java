@@ -31,14 +31,15 @@ public class FamiliaController {
 	}
 	
 	 //Metodo para listar todos e buscar os cadastros
-    @GetMapping("/listarfamilia")
+	@GetMapping("/listarfamilia")
     public ModelAndView lista(@RequestParam(value = "nome", required = false) String nome) {
-        List<FamiliaDTO> retorno = new ArrayList<>();
-        ModelAndView model = new ModelAndView("listaFamilia.html");
+        List<FamiliaDTO> retorno;
+        ModelAndView model = new ModelAndView("listaFamilia");
+
         if (nome == null) {
-            retorno = familiaService.buscarPorNome(nome);
+        	 retorno = familiaService.buscarPorNome(nome); // Retorna todas as famílias
         } else {
-            retorno = familiaService.buscarPorNome(nome);
+            retorno = familiaService.buscarPorNome(nome); // Retorna as famílias com o nome especificado
         }
 
         model.addObject("familia", retorno);

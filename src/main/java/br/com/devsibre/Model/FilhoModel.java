@@ -8,6 +8,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.com.devsibre.Enuns.StatusEnum;
@@ -27,22 +29,14 @@ public class FilhoModel {
     @Enumerated(EnumType.STRING)
     private StatusEnum seBatizado;
     @Enumerated(EnumType.STRING)
-    private StatusEnum status;
-
+    private StatusEnum status;    
+    
+    @ManyToOne
+    @JoinColumn(name = "familia_id")
+    private FamiliaModel familia;
+    
     public FilhoModel() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public FilhoModel(Long id, String nome, String telefone, String email, String dataNascProl, StatusEnum seBatizado,
-			StatusEnum status) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.telefone = telefone;
-		this.email = email;
-		this.dataNascProl = dataNascProl;
-		this.seBatizado = seBatizado;
-		this.status = status;
 	}
 
 	public Long getId() {
@@ -101,9 +95,17 @@ public class FilhoModel {
 		this.status = status;
 	}
 
+	public FamiliaModel getFamilia() {
+		return familia;
+	}
+
+	public void setFamilia(FamiliaModel familia) {
+		this.familia = familia;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(dataNascProl, email, id, nome, seBatizado, status, telefone);
+		return Objects.hash(dataNascProl, email, familia, id, nome, seBatizado, status, telefone);
 	}
 
 	@Override
@@ -116,14 +118,17 @@ public class FilhoModel {
 			return false;
 		FilhoModel other = (FilhoModel) obj;
 		return Objects.equals(dataNascProl, other.dataNascProl) && Objects.equals(email, other.email)
-				&& Objects.equals(id, other.id) && Objects.equals(nome, other.nome) && seBatizado == other.seBatizado
-				&& status == other.status && Objects.equals(telefone, other.telefone);
+				&& Objects.equals(familia, other.familia) && Objects.equals(id, other.id)
+				&& Objects.equals(nome, other.nome) && seBatizado == other.seBatizado && status == other.status
+				&& Objects.equals(telefone, other.telefone);
 	}
 
 	@Override
 	public String toString() {
-		return "Filho [id=" + id + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", dataNascProl="
-				+ dataNascProl + ", seBatizado=" + seBatizado + ", status=" + status + "]";
+		return "FilhoModel [id=" + id + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email
+				+ ", dataNascProl=" + dataNascProl + ", seBatizado=" + seBatizado + ", status=" + status + ", familia="
+				+ familia + "]";
 	}
+	
 	
 }

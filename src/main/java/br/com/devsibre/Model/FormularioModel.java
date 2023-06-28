@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class FormularioModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_c;
     @Column(length = 200, nullable = false)
     private String nome;

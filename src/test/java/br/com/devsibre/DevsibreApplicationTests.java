@@ -66,13 +66,13 @@ class DevsibreApplicationTests {
 
         List<FilhoModel> filhos = new ArrayList<>();
 
-        FilhoModel filho1 = criarFilho("Filho 1", "01/01", "123456789", "filho1@test.com", StatusEnum.Membro, StatusEnum.Batizado);
+        FilhoModel filho1 = criarFilho("Filho 1", "01/01", "123456789", "filho1@test.com", StatusEnum.Membro, StatusEnum.Batizado, familia);
         filhos.add(filho1);
 
-        FilhoModel filho2 = criarFilho("Filho 2", "02/02", "987654321", "filho2@test.com", StatusEnum.NaoMembro, StatusEnum.NaoBatizado);
+        FilhoModel filho2 = criarFilho("Filho 2", "02/02", "987654321", "filho2@test.com", StatusEnum.NaoMembro, StatusEnum.NaoBatizado, familia);
         filhos.add(filho2);
 
-        FilhoModel filho3 = criarFilho("Filho 3", "03/03", "456123789", "filho3@test.com", StatusEnum.Membro, StatusEnum.Batizado);
+        FilhoModel filho3 = criarFilho("Filho 3", "03/03", "456123789", "filho3@test.com", StatusEnum.Membro, StatusEnum.Batizado, familia);
         filhos.add(filho3);
 
         familia.setFilhos(filhos);
@@ -80,7 +80,7 @@ class DevsibreApplicationTests {
         return familia;
     }
 
-    private FilhoModel criarFilho(String nome, String dataNascProl, String telefone, String email, StatusEnum seBatizado, StatusEnum status) {
+    private FilhoModel criarFilho(String nome, String dataNascProl, String telefone, String email, StatusEnum seBatizado, StatusEnum status, FamiliaModel familia) {
         FilhoModel filho = new FilhoModel();
         filho.setNome(nome);
         filho.setDataNascProl(dataNascProl);
@@ -88,9 +88,10 @@ class DevsibreApplicationTests {
         filho.setEmail(email);
         filho.setStatus(status);
         filho.setSeBatizado(seBatizado);
-
+        filho.setFamilia(familia);
+     
         return filho;
     }
-    
+
     
 }
