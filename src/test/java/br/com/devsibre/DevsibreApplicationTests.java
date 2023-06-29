@@ -29,15 +29,16 @@ class DevsibreApplicationTests {
         FormularioModel formulario = criarFormulario();
         formularioService.saveOrUpdate(formulario);
 
-        List<FamiliaDTO> listaDTO = familiaService.buscarPorNome("Membro");
-        for (FamiliaDTO f : listaDTO) {
-            System.out.println("Familia: " + f.getFamilia() + "Filhos" + f.getFilhos() + "Formulario" + f.getFormulario());
-        }
+//        List<FamiliaDTO> listaDTO = familiaService.buscarPorNome("Fulano");
+//        for (FamiliaDTO f : listaDTO) {
+//            System.out.println(f.getFormulario().getNome() +" "+ f.getFamilia().getNomeDoConjuge() + " Data de Nasc ->"+ f.getFamilia().getdataNascEsp() +" Email " + f.getFamilia().getEmail()
+	//	+"filhos" + f.getFilhos());
+//        }
     }
 
     private FormularioModel criarFormulario() {
         FormularioModel formulario = new FormularioModel();
-        formulario.setNome("Fulano");
+        formulario.setNome("Ciclano");
         formulario.setFone("1234567");
         formulario.setEmail("teste@teste.com");
         formulario.setData("01/02/03");
@@ -56,7 +57,7 @@ class DevsibreApplicationTests {
 
     private FamiliaModel criarFamilia() {
         FamiliaModel familia = new FamiliaModel();
-        familia.setNomeDoConjuge("Esposa de tal");
+        familia.setNomeDoConjuge("Esposa do Ciclano");
         familia.setTelefone("1234567");
         familia.setEmail("esposa@test.com");
         familia.setdataNascEsp("02/03");
@@ -66,14 +67,14 @@ class DevsibreApplicationTests {
 
         List<FilhoModel> filhos = new ArrayList<>();
 
-        FilhoModel filho1 = criarFilho("Filho 1", "01/01", "123456789", "filho1@test.com", StatusEnum.Membro, StatusEnum.Batizado, familia);
+        FilhoModel filho1 = criarFilho("1 Filho do Ciclano ", " 01/01", " 123456789", " filho1@test.com ", StatusEnum.Membro, StatusEnum.Batizado, familia);
         filhos.add(filho1);
 
-        FilhoModel filho2 = criarFilho("Filho 2", "02/02", "987654321", "filho2@test.com", StatusEnum.NaoMembro, StatusEnum.NaoBatizado, familia);
-        filhos.add(filho2);
+//        FilhoModel filho2 = criarFilho("2 Filho do Fulano ", " 02/02", " 987654321", " filho2@test.com ", StatusEnum.NaoMembro, StatusEnum.NaoBatizado, familia);
+//        filhos.add(filho2);
 
-        FilhoModel filho3 = criarFilho("Filho 3", "03/03", "456123789", "filho3@test.com", StatusEnum.Membro, StatusEnum.Batizado, familia);
-        filhos.add(filho3);
+//        FilhoModel filho3 = criarFilho("3 Filho do Beltrano ", " 03/03", " 456123789", " filho3@test.com ", StatusEnum.Membro, StatusEnum.Batizado, familia);
+//        filhos.add(filho3);
 
         familia.setFilhos(filhos);
 

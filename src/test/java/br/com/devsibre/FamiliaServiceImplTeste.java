@@ -23,9 +23,10 @@ public class FamiliaServiceImplTeste {
 	 @Test
 	    void contextLoads() {
 	       
-	        List<FamiliaDTO> listaDTO = familiaService.buscarPorNome("fulano");
+	        List<FamiliaDTO> listaDTO = familiaService.buscarPorNome("Fulano");
 	        for (FamiliaDTO f : listaDTO) {
-	            System.out.println("Familia: " + f.getFamilia() + "Filhos" + f.getFilhos() + "Formulario" + f.getFormulario());
+	           System.out.println(f.getFormulario().getNome() +" "+ f.getFamilia().getNomeDoConjuge() + " Data de Nasc ->"+ f.getFamilia().getdataNascEsp() +" Email " + f.getFamilia().getEmail()
+	            		+"filhos" + f.getFilhos());
 	        }
 	    }
 

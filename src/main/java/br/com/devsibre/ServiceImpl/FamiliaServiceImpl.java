@@ -27,6 +27,8 @@ public class FamiliaServiceImpl {
 		this.entityManager = entityManager;
 	}
 	
+	
+	//Metodo para busca o Membro e sua familia por nome
 	public List<FamiliaDTO> buscarPorNome(String nome) {
 	    String jpql = "SELECT f, fam, filho " +
 	                  "FROM FormularioModel f " +
@@ -56,4 +58,33 @@ public class FamiliaServiceImpl {
 
 	    return familiaDTOs;
 	}
+	
+	
+	//Metodo para listar todas as familasa
+	public List<FamiliaDTO> listarTodasFamilias() {
+	    String jpql = "SELECT f, fam, filho " +
+	                  "FROM FormularioModel f " +
+	                  "JOIN f.familia fam " +
+	                  "JOIN fam.filhos filho";
+
+	    TypedQuery<Object[]> query = entityManager.createQuery(jpql, Object[].class);
+	    List<Object[]> results = query.getResultList();
+	    List<FamiliaDTO> familiaDTOs = new ArrayList<>();
+
+	    for (Object[] result : results) {
+	        FormularioModel formulario = (FormularioModel) result[0];
+	        FamiliaModel familia = (FamiliaModel) result[1];
+	        FilhoModel filho = (FilhoModel) result[2];
+
+	        FamiliaDTO familiaDTO = new FamiliaDTO();
+	        familiaDTO.setFormulario(formulario);
+	        familiaDTO.setFamilia(familia);
+	        familiaDTO.setFilhos(Collections.singletonList(filho));
+
+	        familiaDTOs.add(familiaDTO);
+	    }
+
+	    return familiaDTOs;
+	}
+
 }
