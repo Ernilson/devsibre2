@@ -3,34 +3,24 @@ package br.com.devsibre.Dtos;
 import java.util.List;
 import java.util.Objects;
 
-import br.com.devsibre.Model.FamiliaModel;
+import br.com.devsibre.Model.ConjugeModel;
 import br.com.devsibre.Model.FilhoModel;
 import br.com.devsibre.Model.FormularioModel;
 
-public class FamiliaDTO {
-	private String nome;
+public class FamiliaDTO {	
     private FormularioModel formulario;
-    private FamiliaModel familia;
+    private ConjugeModel familia;
     private List<FilhoModel> filhos;
     
     public FamiliaDTO() {
 		
 	}
 
-	public FamiliaDTO(String nome, FormularioModel formulario, FamiliaModel familia, List<FilhoModel> filhos) {
+	public FamiliaDTO(FormularioModel formulario, ConjugeModel familia, List<FilhoModel> filhos) {
 		super();
-		this.nome = nome;
 		this.formulario = formulario;
 		this.familia = familia;
 		this.filhos = filhos;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	public FormularioModel getFormulario() {
@@ -41,11 +31,11 @@ public class FamiliaDTO {
 		this.formulario = formulario;
 	}
 
-	public FamiliaModel getFamilia() {
+	public ConjugeModel getFamilia() {
 		return familia;
 	}
 
-	public void setFamilia(FamiliaModel familia) {
+	public void setFamilia(ConjugeModel familia) {
 		this.familia = familia;
 	}
 
@@ -59,7 +49,7 @@ public class FamiliaDTO {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(familia, filhos, formulario, nome);
+		return Objects.hash(familia, filhos, formulario);
 	}
 
 	@Override
@@ -72,15 +62,15 @@ public class FamiliaDTO {
 			return false;
 		FamiliaDTO other = (FamiliaDTO) obj;
 		return Objects.equals(familia, other.familia) && Objects.equals(filhos, other.filhos)
-				&& Objects.equals(formulario, other.formulario) && Objects.equals(nome, other.nome);
+				&& Objects.equals(formulario, other.formulario);
 	}
 
 	@Override
 	public String toString() {
-		return "FamiliaDTO [nome=" + nome + ", formulario=" + formulario + ", familia=" + familia + ", filhos=" + filhos
-				+ "]";
+		return "FamiliaDTO [formulario=" + formulario + ", familia=" + familia + ", filhos=" + filhos + "]";
 	}
 
+	
 	
 }
 

@@ -53,14 +53,11 @@ and open the template in the editor.
                     <th>EDITAR</th>
                     <th>DELETE</th>
                     <th><a th:href="@{'/pdf'}">PDF</a></th> 
-                    <!--<a th:href="@{'/pdf'}"style="float:right;"><img th:src="@{/images/Pdf.png}" style="width:40px; margin-left:10px;"> -->
+                   
                 </tr>
             </thead>
             <tbody>               
-                <tr th:each="cad:${cadastro}">
-                    <!--
-                    <td th:text="${cad.id_c}"></td>
-                    -->
+                <tr th:each="cad:${cadastro}">                   
                     <td th:text="${cad.nome}"></td> 
                     <td th:text="${cad.logradouro}"></td> 
                     <td th:text="${cad.bairro}"></td> 

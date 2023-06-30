@@ -16,8 +16,8 @@ import javax.persistence.Table;
 import br.com.devsibre.Enuns.StatusEnum;
 
 @Entity
-@Table(name = "familia")
-public class FamiliaModel {
+@Table(name = "conjuge")
+public class ConjugeModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,11 +34,11 @@ public class FamiliaModel {
     @OneToMany(cascade = CascadeType.ALL)
     private List<FilhoModel> filhos;
     
-    public FamiliaModel() {
+    public ConjugeModel() {
 		// TODO Auto-generated constructor stub
 	}	
 
-	public FamiliaModel(Long id, String nomeDoConjuge, String telefone, String email, Integer quantidadeFilhos,
+	public ConjugeModel(Long id, String nomeDoConjuge, String telefone, String email, Integer quantidadeFilhos,
 			String dataNascEsp, StatusEnum seBatizado, StatusEnum status, List<FilhoModel> filhos) {
 		super();
 		this.id = id;
@@ -137,7 +137,7 @@ public class FamiliaModel {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		FamiliaModel other = (FamiliaModel) obj;
+		ConjugeModel other = (ConjugeModel) obj;
 		return Objects.equals(dataNascEsp, other.dataNascEsp) && Objects.equals(email, other.email)
 				&& Objects.equals(filhos, other.filhos) && Objects.equals(id, other.id)
 				&& Objects.equals(nomeDoConjuge, other.nomeDoConjuge)

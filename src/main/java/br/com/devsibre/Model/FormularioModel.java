@@ -35,14 +35,14 @@ public class FormularioModel {
     private String uf;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private FamiliaModel familia;
+    private ConjugeModel familia;
     
     public FormularioModel() {
 
     }
 
 	public FormularioModel(Long id_c, String nome, String fone, String email, String data, String status, String cep,
-			String logradouro, String bairro, String localidade, String uf, FamiliaModel familia) {
+			String logradouro, String bairro, String localidade, String uf, ConjugeModel familia) {
 		super();
 		this.id_c = id_c;
 		this.nome = nome;
@@ -146,11 +146,11 @@ public class FormularioModel {
 		this.uf = uf;
 	}
 
-	public FamiliaModel getFamilia() {
+	public ConjugeModel getFamilia() {
 		return familia;
 	}
 
-	public void setFamilia(FamiliaModel familia) {
+	public void setFamilia(ConjugeModel familia) {
 		this.familia = familia;
 	}
 

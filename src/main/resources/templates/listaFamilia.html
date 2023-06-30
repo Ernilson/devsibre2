@@ -41,17 +41,13 @@
 
 			<thead>
 				<tr>
-					<!--
-                    <th>ID</th>
-                    -->				
 					<th>CONJUGE</th>
 					<th>TELEFONE</th>
 					<th>EMAIL</th>
-					<th> FILHOS</th>				
+					<th>FILHOS</th>
 					<th>STATUS</th>
-					<th>BATIZADO(A)</th>					
-					<th>FILHO NOME - NASCMTO - TELEFONE - EMAIL - BATIZADO?</th>	
-				
+					<th>BATIZADO(A)</th>
+					<th>FILHO NOME - NASCMTO - TELEFONE - EMAIL - BATIZADO?</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -61,27 +57,19 @@
 					<td th:text="${f.familia.email}"></td>
 					<td th:text="${f.familia.quantidadeFilhos}"></td>
 					<td th:text="${f.familia.status}"></td>
-					<td th:text="${f.familia.seBatizado}"></td>				
+					<td th:text="${f.familia.seBatizado}"></td>
 					<td>
-					 <table>
-                <tbody>
-                    <tr th:each="filho : ${f.filhos}">
-                        <td th:text="${filho.nome}"></td>
-                       <td th:text="${filho.dataNascProl}"></td>
-                        <td th:text="${filho.telefone}"></td>
-                        <td th:text="${filho.email}"></td>
-                        <td th:text="${filho.status}"></td>
-                    </tr>
-                </tbody>
-            </table>
-            
-					</td>
-					<!--  			
-				<td><a th:href="@{/edite/}+${f.id}" class="btn btn-warning">Alterar</a>
-				</td>
-				<td><a th:href="@{/deletar/}+${f.id}" class="btn btn-danger">Apagar</a>
-				</td>
-				-->	
+						<table>
+							<tbody>
+								<tr th:each="filho : ${f.filhos}">
+									<td th:text="${filho.nome}"></td>
+									<td th:text="${filho.dataNascProl}"></td>
+									<td th:text="${filho.telefone}"></td>
+									<td th:text="${filho.email}"></td>
+									<td th:text="${filho.status}"></td>
+								</tr>
+							</tbody>
+						</table>
 				</tr>
 			</tbody>
 		</table>

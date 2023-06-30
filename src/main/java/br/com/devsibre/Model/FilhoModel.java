@@ -2,6 +2,7 @@ package br.com.devsibre.Model;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -31,9 +32,9 @@ public class FilhoModel {
     @Enumerated(EnumType.STRING)
     private StatusEnum status;    
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "familia_id")
-    private FamiliaModel familia;
+    private ConjugeModel familia;
     
     public FilhoModel() {
 		// TODO Auto-generated constructor stub
@@ -95,11 +96,11 @@ public class FilhoModel {
 		this.status = status;
 	}
 
-	public FamiliaModel getFamilia() {
+	public ConjugeModel getFamilia() {
 		return familia;
 	}
 
-	public void setFamilia(FamiliaModel familia) {
+	public void setFamilia(ConjugeModel familia) {
 		this.familia = familia;
 	}
 
