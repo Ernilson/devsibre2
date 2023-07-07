@@ -24,7 +24,6 @@ public class FamiliaServiceImplTeste {
 
 	private final EntityManager entityManager;
 
-	@Autowired
 	public FamiliaServiceImplTeste(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
