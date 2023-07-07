@@ -59,7 +59,7 @@ Na rais do diretorio execute o comando a abaixo gerar imagem e o banco via conta
 ![Relatorio de Membros](https://github.com/Ernilson/devsibre/assets/30840118/23e86abb-c18d-4187-a7b2-62a02f0ae6e6)
 
 ## TELA DE MODELAGEM
-![modelagem](https://github.com/Ernilson/devsibre/assets/30840118/1ea4e495-f6ea-4888-afb1-a076a1602dc0)
+![image](https://github.com/Ernilson/devsibre2/assets/30840118/2217b56c-083c-4fd7-8a47-fc0e3f67bb02)
 
 ## Comandos Docker:
 docker-compose up --build --force-recreate
